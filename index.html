@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLACKJACK GAME</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-image: url('/blackjack_assets/images/MainBg.jpg'); /* Replace with a suitable background image URL */
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #fff;
+            font-family: 'Cabin', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            font-size: 48px; /* Increase font size */
+            font-weight: bold;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7); /* Deeper shadow */
+            margin-top: 60px;
+            letter-spacing: 3px;
+            color: #ffcc00; /* Add a contrasting color */
+            font-family: 'Luckiest Guy', sans-serif; /* Apply casino-like font */
+            margin-bottom: 40px; /* Add space below the header */
+        }
+        .container-1 {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+            margin: 20px 0;
+        }
+        .button {
+            margin: 10px;
+            border-radius: 12px;
+            padding: 20px 40px; /* Increase padding */
+            font-size: 22px; /* Slightly larger font */
+            transition: transform .2s, background-color .3s, box-shadow .3s;
+            background: linear-gradient(90deg, #007bff 0%, #00d4ff 100%); /* Gradient effect */
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px; /* Space between icon and text */
+        }
+        .button i {
+            font-size: 1.2em; /* Icon size */
+        }
+        .button:hover {
+            transform: scale(1.08);
+            background: linear-gradient(90deg, #0056b3 0%, #009cff 100%);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Glowing effect */
+        }
+        /* Dialog Styles */
+        #dialog {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.9); /* Slightly darker overlay */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease-in-out; /* Smooth transition */
+        }
+        .dialog-content {
+            background: #1c1c1c; /* Darker background */
+            color: #fff; /* Lighter text */
+            padding: 30px;
+            border-radius: 15px;
+            width: 350px;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .dialog-content h2 {
+            margin-top: 0;
+            color: #ffcc00; /* Add contrast */
+            text-align: center;
+        }
+        .dialog-content p {
+            line-height: 1.8;
+            color: #ddd; /* Softer text color */
+        }
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header {
+                font-size: 32px; /* Adjust for smaller screens */
+            }
+            .button {
+                font-size: 18px;
+                padding: 15px 25px;
+            }
+            .dialog-content {
+                width: 90%; /* Adjust dialog width for smaller screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">WELCOME TO BLACKJACK GAME</div>
+
+    <div class="container-1">
+        <button id="rules" class="button"><i class="fas fa-info-circle"></i> OBJECTIVE OF BLACKJACK</button>
+        <button id="single" class="button">
+            <i class="fas fa-user"></i> 
+            <a href="index(single).html" target="_blank" style="color: white; text-decoration: none;">SINGLE PLAYER</a>
+        </button>
+        <button id="multi" class="button">
+            <i class="fas fa-users"></i> 
+            <a href="index(multi).html" target="_blank" style="color: white; text-decoration: none;">TWO PLAYER</a>
+        </button>
+    </div>
+
+    <!-- Dialog Component -->
+    <div id="dialog">
+        <div class="dialog-content">
+            <h2>Objective of Blackjack</h2>
+            <p>Beat The Dealer. <br>
+            There are some misconceptions about the objective of the game of blackjack, but at the simplest level, all you are trying to do is beat the dealer.
+            <br><br>
+            <strong>How do you beat the dealer?</strong><br>
+            - By drawing a hand value that is higher than the dealer’s hand value.<br>
+            - By the dealer drawing a hand value that goes over 21.<br>
+            - By drawing a hand value of 21 on your first two cards when the dealer does not.<br>
+            <strong>How do you lose to the dealer?</strong><br>
+            - Your hand value exceeds 21.<br>
+            - The dealer's hand has a greater value than yours at the end of the round.<br>
+            </p>
+            <button id="close" class="button" style="background-color: red;">CLOSE</button>
+        </div>
+    </div>
+
+    <script>
+        const rulesButton = document.querySelector('#rules');
+        const closeButton = document.querySelector('#close');
+        const dialog = document.querySelector('#dialog');
+
+        rulesButton.addEventListener('click', () => {
+            dialog.style.display = 'flex';
+        });
+
+        closeButton.addEventListener('click', () => {
+            dialog.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
